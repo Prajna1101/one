@@ -2,8 +2,7 @@ pipeline {
     agent any  // Use any available agent
 
     tools {
-        gradle 'Gradle'  // Ensure this matches the name configured in Jenkins
-        jdk 'jdk'
+        maven 'Maven'
     }
     stages {
         stage('Checkout') {
@@ -14,13 +13,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'gradle build'  // Run Gradle build
+                sh 'mvn clean package'  // Run Gradle build
             }
         }
 
         stage('Test') {
             steps {
-                sh 'gradle test'  // Run unit tests
+                sh 'mvn test'  // Run unit tests
             }
         }
 
